@@ -1,0 +1,53 @@
+h1{
+    color:aliceblue;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+body{
+    background-color: #090040;
+}
+header{
+    display: block;
+    justify-content: center;
+}
+header h1{
+    display: flex;
+    justify-content: center;
+    font-size: 2.2em;
+    color: #ffffff;
+}
+nav ul{
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    background-color: #471396 ;
+    
+}
+nav ul li{
+    margin-right: 1.2em;
+}
+nav ul li a{
+    display: block;
+    padding: 0.9em 1.2em;
+    color: #FFCC00;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1.5em;
+    font-weight: bolder;
+}
+nav ul li a:hover{
+    cursor: pointer;
+    background-color: #B13BFF ;
+}
+.icon{
+    position: relative;
+    font-size: 2em;
+    top: 2rem;
+    left:2em;
+    gap: 2em;
+    display: inline-block;
+}
