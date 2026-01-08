@@ -40,9 +40,11 @@
 > **Note:** Fees vary based on the specific course duration and level.
 
 - **Short-term Courses (e.g., 1-2 months):** ₹500 – ₹5,000
-    - *Example:* Basic C/C++ crash course might be lower end; Java/Python full course might be higher.
-- **Yearly Packages (Academic Tuition):** ₹5,000 – ₹50,000
-    - *Details:* Includes full syllabus coverage, material, and test series. Class 12 PCM/PCB packages are at the higher end.
+    - *Example:* Basic C/C++ crash course.
+- **Tuition Fees (Monthly):**
+    - **Class 10 (SSLC):** ₹4,000 per month
+    - **Class 12 (HSC):** ₹5,000 per month
+    - *General Range:* Fees typically range between ₹500 to ₹5,000 depending on the course and duration.
 
 ## Admissions
 - **Process:** Visit the center or fill the inquiry form on the website.
