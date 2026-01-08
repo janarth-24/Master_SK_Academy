@@ -124,12 +124,64 @@
 
             </div>
 
-            <div class="guidance-cta"
-                style="text-align: center; margin-top: 3rem; background: var(--bg-color); padding: 2rem; border-radius: 10px;">
-                <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Need Personalized Advice?</h3>
-                <p style="margin-bottom: 1.5rem;">Our expert faculty can help guide you towards the path that best fits
-                    your strengths and interests.</p>
-                <a href="contact.html" class="btn btn-primary">Contact Us for Counseling</a>
+            <!-- Career Counseling Form -->
+            <div class="guidance-form-section"
+                style="margin-top: 3rem; background: var(--bg-color); padding: 40px; border-radius: 10px; border-top: 5px solid var(--primary-color);">
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <h3 style="color: var(--primary-color); font-size: 2rem; margin-bottom: 10px;">Request Personalized
+                        Counseling</h3>
+                    <p style="color: var(--text-light); font-size: 1.1rem;">Our expert faculty can help guide you
+                        towards the path that best fits your strengths and interests.</p>
+                </div>
+
+                <form id="counselingForm" action="https://formsubmit.co/senthil87ks@gmail.com" method="POST"
+                    style="max-width: 800px; margin: 0 auto;">
+                    <input type="hidden" name="_subject" value="New Career Counseling Request - Master SK Academy">
+
+                    <div class="form-row" style="display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 20px;">
+                        <div class="form-group" style="flex: 1; min-width: 250px;">
+                            <label for="studentName"
+                                style="display: block; margin-bottom: 8px; font-weight: 600;">Student Name *</label>
+                            <input type="text" id="studentName" name="name" required
+                                style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px;">
+                        </div>
+                        <div class="form-group" style="flex: 1; min-width: 250px;">
+                            <label for="studentMobile"
+                                style="display: block; margin-bottom: 8px; font-weight: 600;">Mobile Number *</label>
+                            <input type="tel" id="studentMobile" name="mobile" required
+                                style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px;">
+                        </div>
+                    </div>
+
+                    <div class="form-row" style="display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 20px;">
+                        <div class="form-group" style="flex: 1; min-width: 250px;">
+                            <label style="display: block; margin-bottom: 8px; font-weight: 600;">Current Grade *</label>
+                            <div style="display: flex; gap: 20px; padding: 10px 0;">
+                                <label style="font-weight: normal;"><input type="radio" name="grade"
+                                        value="10th Completed" required> 10th Completed</label>
+                                <label style="font-weight: normal;"><input type="radio" name="grade"
+                                        value="12th Completed" required> 12th Completed</label>
+                            </div>
+                        </div>
+                        <div class="form-group" style="flex: 1; min-width: 250px;">
+                            <label for="interestArea" style="display: block; margin-bottom: 8px; font-weight: 600;">Area
+                                of Interest *</label>
+                            <select id="interestArea" name="interest" required
+                                style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px;">
+                                <option value="">Select Interest</option>
+                                <option value="Engineering">Engineering</option>
+                                <option value="Medicine">Medicine & Health</option>
+                                <option value="Arts & Science">Arts & Science</option>
+                                <option value="Government Exams">Government Exams</option>
+                                <option value="Undecided">Undecided / Need Guidance</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 30px;">
+                        <button type="submit" class="btn btn-primary btn-large">Request Free Counseling</button>
+                    </div>
+                </form>
             </div>
 
         </div>

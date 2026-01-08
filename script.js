@@ -68,131 +68,66 @@ document.addEventListener('DOMContentLoaded', function () {
     // ============================================
     // Form Handling - Inquiry Form (Admissions Page)
     // ============================================
-    const inquiryForm = document.getElementById('inquiryForm');
+    // ============================================
+    // Form Handling - Generic Formspree AJAX Logic
+    // ============================================
 
-    if (inquiryForm) {
-        inquiryForm.addEventListener('submit', function (e) {
-            e.preventDefault();
+    // Function to handle Formspree submissions via AJAX
+    async function handleFormspreeSubmit(event) {
+        event.preventDefault();
+        const form = event.target;
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalBtnText = submitBtn ? submitBtn.innerHTML : 'Submit';
 
-            // Get form data
-            const formData = {
-                studentName: document.getElementById('studentName').value,
-                parentName: document.getElementById('parentName').value,
-                phone: document.getElementById('phone').value,
-                email: document.getElementById('email').value,
-                class: document.getElementById('class').value,
-                message: document.getElementById('message').value
-            };
+        // Disable button to prevent double submit
+        if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        }
 
-            // Basic validation
-            if (!formData.studentName || !formData.parentName || !formData.phone || !formData.class) {
-                alert('Please fill in all required fields.');
-                return;
-            }
+        const data = new FormData(form);
 
-            // Phone number validation (basic)
-            const phoneRegex = /^[0-9]{10}$/;
-            if (!phoneRegex.test(formData.phone.replace(/\D/g, ''))) {
-                alert('Please enter a valid 10-digit phone number.');
-                return;
-            }
+        try {
+            const response = await fetch(form.action, {
+                method: form.method,
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
 
-            // Email validation (if provided)
-            if (formData.email) {
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(formData.email)) {
-                    alert('Please enter a valid email address.');
-                    return;
+            if (response.ok) {
+                alert("Thank you! Your submission has been sent successfully. We will get back to you soon.");
+                form.reset();
+            } else {
+                const responseData = await response.json();
+                if (Object.hasOwn(responseData, 'errors')) {
+                    const errorMsg = responseData["errors"].map(error => error["message"]).join(", ");
+                    alert(`Oops! There was a problem: ${errorMsg}`);
+                } else {
+                    alert("Oops! There was a problem submitting your form. Please try again later.");
                 }
             }
-
-            // Send data to backend
-            fetch('http://localhost:8000/submit-admission', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            })
-                .then(response => {
-                    if (response.ok) {
-                        return response.json();
-                    }
-                    throw new Error('Network response was not ok.');
-                })
-                .then(data => {
-                    alert('Thank you for your inquiry! We will contact you shortly.');
-                    inquiryForm.reset();
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('Sorry, there was an error submitting your form. Please try again later or contact us directly.');
-                });
-        });
+        } catch (error) {
+            console.error('Error:', error);
+            alert("Oops! There was a network problem. Please try again later.");
+        } finally {
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+            }
+        }
     }
 
-    // ============================================
-    // Form Handling - Contact Form
-    // ============================================
-    const contactForm = document.getElementById('contactForm');
+    // Attach listener to Forms
+    const formsToHandle = ['inquiryForm', 'contactForm', 'recruitmentForm', 'counselingForm'];
 
-    if (contactForm) {
-        contactForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            // Get form data
-            const formData = {
-                name: document.getElementById('contactName').value,
-                phone: document.getElementById('contactPhone').value,
-                email: document.getElementById('contactEmail').value,
-                subject: document.getElementById('contactSubject').value,
-                message: document.getElementById('contactMessage').value
-            };
-
-            // Basic validation
-            if (!formData.name || !formData.phone || !formData.email || !formData.subject || !formData.message) {
-                alert('Please fill in all required fields.');
-                return;
-            }
-
-            // Email validation
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(formData.email)) {
-                alert('Please enter a valid email address.');
-                return;
-            }
-
-            // Phone number validation (basic)
-            const phoneRegex = /^[0-9]{10}$/;
-            if (!phoneRegex.test(formData.phone.replace(/\D/g, ''))) {
-                alert('Please enter a valid 10-digit phone number.');
-                return;
-            }
-
-            // Send data to backend
-            fetch('http://localhost:8000/submit-contact', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            })
-                .then(response => {
-                    if (response.ok) {
-                        return response.json();
-                    }
-                    throw new Error('Network response was not ok.');
-                })
-                .then(data => {
-                    alert('Thank you for contacting us! We will get back to you soon.');
-                    contactForm.reset();
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('Sorry, there was a problem sending your message. Please try again later.');
-                });
-        });
-    }
+    formsToHandle.forEach(formId => {
+        const form = document.getElementById(formId);
+        if (form) {
+            form.addEventListener('submit', handleFormspreeSubmit);
+        }
+    });
 
     // ============================================
     // Scroll Animations (Fade in on scroll)

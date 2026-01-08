@@ -88,15 +88,62 @@
             </div>
 
             <!-- Join Our Team Section -->
+            <!-- Join Our Team Section -->
             <div class="join-team-section"
-                style="text-align: center; margin: 40px 0; padding: 40px; background-color: #f0f4f8; border-radius: 10px; border-left: 5px solid var(--secondary-color);">
-                <h2 style="color: var(--primary-color); margin-bottom: 15px;">Interested in Teaching or Collaborating?
-                </h2>
-                <p style="margin-bottom: 20px; font-size: 1.1rem; color: var(--text-dark);">We are always looking for
-                    passionate educators and staff to join Master SK Academy. If you are interested in collaborating
-                    with us, please reach out.</p>
-                <a href="mailto:senthil87ks@gmail.com?subject=Career%20Opportunity" class="btn btn-primary">Join Our
-                    Team</a>
+                style="margin: 40px 0; padding: 40px; background-color: #f0f4f8; border-radius: 10px; border-left: 5px solid var(--secondary-color);">
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <h2 style="color: var(--primary-color); margin-bottom: 15px;">Interested in Teaching or
+                        Collaborating?</h2>
+                    <p style="font-size: 1.1rem; color: var(--text-dark);">We are always looking for passionate
+                        educators and staff to join Master SK Academy.</p>
+                </div>
+
+                <form id="recruitmentForm" action="https://formsubmit.co/senthil87ks@gmail.com" method="POST"
+                    style="max-width: 700px; margin: 0 auto;">
+                    <input type="hidden" name="_subject" value="New Recruitment Application - Master SK Academy">
+
+                    <div class="form-row" style="display: flex; gap: 20px; margin-bottom: 20px;">
+                        <div class="form-group" style="flex: 1;">
+                            <label for="recruitName">Full Name *</label>
+                            <input type="text" id="recruitName" name="name" required
+                                style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                        </div>
+                        <div class="form-group" style="flex: 1;">
+                            <label for="recruitPhone">Phone Number *</label>
+                            <input type="tel" id="recruitPhone" name="phone" required
+                                style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                        </div>
+                    </div>
+
+                    <div class="form-row" style="display: flex; gap: 20px; margin-bottom: 20px;">
+                        <div class="form-group" style="flex: 1;">
+                            <label for="recruitEmail">Email Address *</label>
+                            <input type="email" id="recruitEmail" name="email" required
+                                style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                        </div>
+                        <div class="form-group" style="flex: 1;">
+                            <label for="recruitRole">Role Interested In *</label>
+                            <select id="recruitRole" name="role" required
+                                style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                                <option value="">Select Role</option>
+                                <option value="Teaching Staff">Teaching Staff</option>
+                                <option value="Non-Teaching Staff">Non-Teaching Staff</option>
+                                <option value="Guest Lecturer">Guest Lecturer</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 20px;">
+                        <label for="recruitMessage">Message / Brief Profile *</label>
+                        <textarea id="recruitMessage" name="message" rows="4" required
+                            style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;"
+                            placeholder="Tell us about your experience..."></textarea>
+                    </div>
+
+                    <div style="text-align: center;">
+                        <button type="submit" class="btn btn-primary">Submit Application</button>
+                    </div>
+                </form>
             </div>
 
             <!-- Contact Form -->
@@ -104,7 +151,9 @@
                 <h2>Send Us a Message</h2>
                 <p>Fill out the form below and we'll get back to you as soon as possible.</p>
 
-                <form class="contact-form" id="contactForm">
+                <form class="contact-form" id="contactForm" action="https://formsubmit.co/senthil87ks@gmail.com"
+                    method="POST">
+                    <input type="hidden" name="_subject" value="New Contact Inquiry - Master SK Academy">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="contactName">Your Name *</label>
